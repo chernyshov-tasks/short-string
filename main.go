@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	"regexp"
+	"sort"
 	"strconv"
+	"strings"
 )
 
 // Проверяет содержится ли элемент в массиве
@@ -16,6 +18,14 @@ func Contains(elements []rune, element rune) bool {
 	return false
 }
 
+// Сортирует строку в алфавитном порядке
+func SortString(w string) string {
+	s := strings.Split(w, "")
+	sort.Strings(s)
+	return strings.Join(s, "")
+}
+
+// "Сворачивает строку"
 func Counter(s string) string {
 	var (
 		// Массив шаблонов, который содержит уже "подсчитанные элементы"
@@ -24,6 +34,9 @@ func Counter(s string) string {
 		inPatterns  bool
 		shortString string
 	)
+
+	// Сортируем строку
+	s = SortString(s)
 
 	for _, v := range s {
 
@@ -46,5 +59,5 @@ func Counter(s string) string {
 }
 
 func main() {
-	fmt.Printf("Output: %v", Counter("aaabbbccccc"))
+	fmt.Printf("Output: %v", Counter("zzzzcccUUUuu"))
 }
