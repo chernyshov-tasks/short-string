@@ -52,6 +52,7 @@ func Counter(s string) string {
 			pattern := regexp.MustCompile(string(v))
 			matches := pattern.FindAllStringIndex(s, -1)
 
+			// Формируем строку для вывода
 			shortString += string(v) + strconv.Itoa(len(matches))
 		}
 	}
